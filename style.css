@@ -1,4 +1,18 @@
-#results {
+.header {
+    display:flex;
+    flex-direction: row;
+    place-items: center;
+    justify-items: baseline;
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+}
+
+#popcorn {
+    height: 30px;
+}
+#movies-grid {
     display: grid;
    
     grid-template-columns: repeat(5, 1fr);
@@ -17,8 +31,6 @@ h1 {
     margin:0px;
 }
 
-
-
 #form {
     position: relative;
     display: flex;
@@ -26,33 +38,32 @@ h1 {
     min-width: 100px;
     padding: 10px;
     background-color: #121212;
+    border: white;
+    color: white;
+    border-bottom: 5px;
 }
 
-#search {
+#search-input {
     left: 15px;
     background-color: #121212;
     color:white;
+    border: white;
+    border-style:solid;
 }
 
-.search-icon {
-    position: relative;
-    bottom: 0.5px;
-    left: 15px;
-    width: 11px;
-    visibility: visible;
-}
 
-.clear-icon {
+#close-search-btn {
     position: relative;
-    
+    top:5px;
+    background-color: #141414;
     right: 15px;
-    width: 10px;
+    width: 5px;
     cursor: pointer;
     /* visibility: hidden; */
 }
 
 .search {
-    border: 1px solid grey;
+    border: 1px solid white;
     border-radius: 5px;
     height: 20px;
     width: 100%;
@@ -63,7 +74,7 @@ h1 {
 
 
 .search:hover, .search:focus {
-    border: 1.5px solid #009688;
+    border: 1.5px solid red;
     background-color: white;
   }
 
@@ -80,7 +91,7 @@ p {
     /*justify-content: center;*/
 }
 
-.movie {
+.movie-poster {
     height: 97%;
     width: 97%;
     border-radius: 3%;
@@ -91,10 +102,12 @@ body {
 }
 
 
-#load {
+#load-more-movies-btn {
     display: none;
     justify-content: center;
     padding: 10px;
+    border: white;
+    border-style:solid;
 }
 
 @media screen and (min-width:250px) and (max-width: 500px) {
@@ -121,7 +134,7 @@ body {
     }
 }
 
-.movieTitle {
+.movie-title {
     margin: 0px;
 }
 
@@ -150,6 +163,70 @@ body {
     margin: 0px;
 }
 
-.movieContainer {
+.movie-card {
     margin: 0px;
+    background-color: transparent;
 }
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    place-items: center;
+    flex-direction: column;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.7) /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    display: grid;
+
+place-items: center
+;
+    margin: auto; /* 15% from the top and centered */
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button */
+  #close-btn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close-btn:hover,
+  .close-btn:focus {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  button {
+    padding: 0px;
+    background-color:transparent;
+    border: 0px;
+  }
+
+
+  #load-more-movies-btn {
+    color: white;
+  }
+
+  #load{
+    display: grid;
+    text-align: center;
+    place-items: center
+  }
