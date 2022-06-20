@@ -44,21 +44,21 @@ Deployed Application (optional): [Flixster Deployed Site](ADD_LINK_HERE)
 
 `TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video or gif actually renders and animates when viewing this README. (🚫 Remove this paragraph after adding walkthrough video)
 
-`ADD_EMBEDDED_CODE_HERE`
+[ezgif.com-gif-maker-2.mov.zip](https://github.com/carolinecreamer/flixster/files/8932718/ezgif.com-gif-maker-2.mov.zip)
 
 ### Reflection
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-Add your response here
+Yes, particularly Giphy. I think that the "load more" functionality from Giphy was especially helpful. 
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
   
-Add your response here
+I would have embedded a video and deployed my project!
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Add your response here
+We haven't demoed our projects but from showing my project to my manager, I think it looks good!
 
 ### Open-source libraries used
 
@@ -67,3 +67,6 @@ Add your response here
 ### Shout out
 
 Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
+
+My manager, Iris, and Vincent, my TA, were so helpful! 
+
