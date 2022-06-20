@@ -4,9 +4,7 @@ const apiKey = `359745d5a46518d0fc333ef89de1bad3`;
 let movieData   = ``;
 let searchParam = ``;
 let pages       = 1;
-let limit       = 10;
-let offset      = pages * limit;
-let modalId     = ""
+let modalId     = "";
 
 const clearIcon  = document.getElementById("close-search-btn");
 const searchIcon = document.querySelector(".search-icon");
@@ -15,31 +13,30 @@ const searchBar  = document.getElementById("search-input");
 searchBar.addEventListener("keyup", (event) => {
     if(searchBar.value == "") {
         clearIcon.style.visibility  = "hidden";
-        console.log("here")
         document.getElementById('movies-grid').innerHTML = ``;
-        fetchMovies(false);
+        fetchMovies(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=${pages}`);
     } else if(searchBar.value){
         clearIcon.style.visibility   = "visible";
         searchParam = document.getElementById('search-input').value;
         pages = 1;
         document.getElementById('movies-grid').innerHTML = ``;
-        fetchMovies(true);
+        fetchMovies(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&page=${pages}&include_adult=false&query=${searchParam}`);
     } 
 });
 
 clearIcon.addEventListener("click", () => {
+    pages = 1;
     document.getElementById('movies-grid').innerHTML = ``
     searchBar.value = "";
+    fetchMovies(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=${pages}`);
     clearIcon.style.visibility = "hidden";
-    console.log("click")
-    fetchMovies(false);
 })
 
 
-function loadResults(search) {
+function loadResults() {
     ++pages;
     //offset = pages * limit;
-    if (search == true) {
+    if (searchParam != "") {
         fetchMovies(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&page=${pages}&include_adult=false&query=${searchParam}`);
     }
     else {
@@ -50,9 +47,7 @@ function loadResults(search) {
 
 
 
-function renderMovies(search) {
-    console.log(movieData)
-    
+function renderMovies() {
     movieData.results.forEach((row, index) => {
         let id = movieData.results[index].id;
         modalId  = `myModal` + movieData.results[index].id;
@@ -76,17 +71,7 @@ function renderMovies(search) {
         `
     });
 
-    var load = document.getElementById("load-more-movies-btn");
-    load.style.display = "flex";
-
-    load.addEventListener('click', (event) => {
-        if (search == true) {
-            loadResults(true);
-        }
-        else {
-            loadResults(false);
-        }
-    })
+    
 }
 
 async function openModal(id) {
@@ -107,28 +92,14 @@ async function openModal(id) {
         
     `
     document.querySelector('.modal').style.display = "flex";
-   /* let val = document.getElementById(modalId);
-   console.log(val);*/
 }
 
-async function fetchMovies(search) {
+async function fetchMovies(url) {
     try {
-        if (search == true) {
-            console.log("search")
-            var response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&page=${pages}&include_adult=false&query=${searchParam}`)
-            var results  = await response.json(); 
-            console.log(results)
-            movieData = results;
-            renderMovies(true);
-        }
-        else {
-            console.log(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=${pages}`)
-            var response = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=${pages}`)
-            var results  = await response.json(); 
-            console.log(results)
-            movieData = results;
-            renderMovies(false);
-        }
+        var response = await fetch(url)
+        var results  = await response.json(); 
+        movieData = results;
+        renderMovies();
         
     }
     catch (error) {
@@ -137,26 +108,26 @@ async function fetchMovies(search) {
 }
 
 function closeModal() {
-    console.log("button clicked");
     document.querySelector('.modal').style.display = "none";
     document.getElementById('popup-grid').innerHTML = `<button id="close-btn" onclick="closeModal()">x</button>`;
 }
-/*document.getElementById('form').addEventListener('submit', (event) => {
-    event.preventDefault();
-    searchParam = document.getElementById('search').value;
-    console.log(searchParam)
-    pages = 1;
-    document.getElementById('results').innerHTML = ``;
-    fetchMovies(true);
-})
-*/
+
 window.onload = function () {
-    console.log("here")
-    fetchMovies(false);
+    fetchMovies(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=${pages}`);
     modalBtn = document.getElementById("close-btn");
-    console.log(modalBtn)
-    document.getElementById("close-btn").addEventListener("click", () => {
-        
+    document.getElementById("close-btn").addEventListener("click", () => {    
+    })
+
+    var load = document.getElementById("load-more-movies-btn");
+    load.style.display = "flex";
+
+    load.addEventListener('click', (event) => {
+        if (searchParam != "") {
+            loadResults();
+        }
+        else {
+            loadResults();
+        }
     })
 }
 

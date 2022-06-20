@@ -12,6 +12,7 @@
 #popcorn {
     height: 30px;
 }
+
 #movies-grid {
     display: grid;
    
@@ -110,29 +111,8 @@ body {
     border-style:solid;
 }
 
-@media screen and (min-width:250px) and (max-width: 500px) {
-    #results {
-        grid-template-columns: repeat(1, 1fr);
-    }
-}
 
-@media screen and (min-width:501px) and (max-width: 600px) {
-    #results {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
 
-@media screen and (min-width: 601px) and (max-width: 800px) {
-    #results {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media screen and (min-width: 801px) and (max-width: 1524px) {
-    #results {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
 
 .movie-title {
     margin: 0px;
@@ -156,7 +136,7 @@ body {
 }
 
 .imageContainer {
-    display: flex;
+    display: flex; 
     flex-direction: column;
     width: 90%;
     height: 90%;
@@ -230,3 +210,24 @@ place-items: center
     text-align: center;
     place-items: center
   }
+  @media screen and (min-width:250px) and (max-width: 500px) {
+    #movies-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+  @media screen and (min-width: 801px) and (max-width: 1524px) {
+    #movies-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+@media screen and (min-width: 601px) and (max-width: 800px) {
+    #movies-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media screen and (min-width:501px) and (max-width: 600px) {
+    #movies-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
